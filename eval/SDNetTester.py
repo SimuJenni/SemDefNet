@@ -50,7 +50,7 @@ class SDNetTester:
             label_test -= self.dataset.label_offset
 
             # Pre-process data
-            img_test = self.pre_processor.process_transfer_test(img_test)
+            img_test = self.pre_processor.process_test(img_test)
 
             # Make batches
             imgs_test, labels_test = tf.train.batch([img_test, label_test], batch_size=self.model.batch_size,
@@ -74,13 +74,6 @@ class SDNetTester:
             imgs_test = tf.stack(imgs_test_p, axis=0)
 
         return imgs_test, labels_test
-
-    def make_image_summaries(self, edges_train, img_gen, img_rec, imgs_train, toons_train):
-        tf.summary.image('imgs/generator out', montage_tf(img_gen, 1, self.im_per_smry), max_images=1)
-        tf.summary.image('imgs/autoencoder', montage_tf(img_rec, 1, self.im_per_smry), max_images=1)
-        tf.summary.image('imgs/ground truth', montage_tf(imgs_train, 1, self.im_per_smry), max_images=1)
-        tf.summary.image('imgs/cartoons', montage_tf(toons_train, 1, self.im_per_smry), max_images=1)
-        tf.summary.image('imgs/edge maps', montage_tf(edges_train, 1, self.im_per_smry), max_images=1)
 
     def test_classifier(self, num_conv_trained=None, dataset_id=None):
         if not self.additional_info:
