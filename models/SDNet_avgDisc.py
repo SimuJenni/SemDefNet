@@ -1,7 +1,7 @@
 import tensorflow as tf
 import tensorflow.contrib.slim as slim
-from AlexNet import AlexNet
-from layers import up_conv2d, spatial_shuffle, res_block_bottleneck
+from AlexNet_avgDisc import AlexNet
+from layers import up_conv2d, pixel_dropout, res_block_bottleneck
 
 DEFAULT_FILTER_DIMS = [64, 128, 256, 512, 1024]
 
@@ -54,7 +54,7 @@ class SDNet:
             num_layers: The number of convolutional down/upsampling layers to be used.
             batch_size: The batch-size used during training (used to generate training labels)
         """
-        self.name = 'SDNet_shuffle_res{}_{}'.format(num_res, tag)
+        self.name = 'SDNet_avgDisc_res{}_{}'.format(num_res, tag)
         self.num_layers = num_layers
         self.batch_size = batch_size
         self.im_shape = target_shape
@@ -80,14 +80,13 @@ class SDNet:
         """
         # Concatenate cartoon and edge for input to generator
         enc_im = self.encoder(imgs, reuse=reuse, training=train)
-        pixel_drop, drop_mask = spatial_shuffle(enc_im, 0.8)
+        pixel_drop, drop_mask = pixel_dropout(enc_im, 0.75)
         self.rec_weights = tf.image.resize_nearest_neighbor(drop_mask, self.im_shape[:2])
         self.drop_label = slim.flatten(drop_mask)
 
         # Decode both encoded images and generator output using the same decoder
         self.dec_im = self.decoder(enc_im, reuse=reuse, training=train)
-        pixel_drop = self.generator(pixel_drop, drop_mask, reuse=reuse, training=train)
-        self.dec_drop = self.decoder(pixel_drop, reuse=True, training=train)
+        self.dec_drop = self.generator(pixel_drop, drop_mask, reuse=reuse, training=train)
 
         # Build input for discriminator (discriminator tries to guess order of real/fake)
         self.disc_real, __, __ = self.discriminator.discriminate(self.dec_im, reuse=reuse, training=train)
@@ -136,6 +135,13 @@ class SDNet:
                 for i in range(self.num_res_layers):
                     net = res_block_bottleneck(net, res_dim, res_dim / 4, noise_channels=32, scope='res_{}'.format(i))
                     net = net_in + (1.0-drop_mask)*net
+                for l in range(0, self.num_layers - 1):
+                    net = up_conv2d(net, num_outputs=f_dims[self.num_layers - l - 2], scope='deconv_{}'.format(l))
+                net = tf.image.resize_images(net, (self.im_shape[0], self.im_shape[1]),
+                                             tf.image.ResizeMethod.NEAREST_NEIGHBOR)
+                net = slim.conv2d(net, num_outputs=32, scope='deconv_{}'.format(self.num_layers), stride=1)
+                net = slim.conv2d(net, num_outputs=3, scope='deconv_{}'.format(self.num_layers + 1), stride=1,
+                                  activation_fn=tf.nn.tanh, normalizer_fn=None)
                 return net
 
     def encoder(self, net, reuse=None, training=True):

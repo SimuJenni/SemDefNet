@@ -108,9 +108,9 @@ class AlexNet:
                     drop_pred = slim.conv2d(net, 1, kernel_size=[1, 1], activation_fn=None, normalizer_fn=None)
                     drop_pred = slim.flatten(drop_pred)
 
+                    net = slim.conv2d(net, 2, kernel_size=[1, 1], activation_fn=None, normalizer_fn=None)
+                    enc_shape = net.get_shape().as_list()
+                    net = slim.avg_pool2d(net, kernel_size=enc_shape[1:3], stride=1)
                     net = slim.flatten(net)
-                    net = slim.fully_connected(net, 2, scope='fc',
-                                               activation_fn=None,
-                                               normalizer_fn=None,
-                                               biases_initializer=tf.zeros_initializer)
+
                 return net, drop_pred, encoded

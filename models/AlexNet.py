@@ -102,10 +102,15 @@ class AlexNet:
                 if self.use_pool5:
                     net = slim.max_pool2d(net, kernel_size=[3, 3], stride=2, scope='pool_5', padding=self.pad)
                 encoded = net
+                drop_pred = None
 
                 if with_fc:
-                    net = slim.conv2d(net, 1, kernel_size=[1, 1], activation_fn=None, normalizer_fn=None)
-                    enc_shape = net.get_shape().as_list()
-                    net = slim.avg_pool2d(net, kernel_size=enc_shape[1:3], stride=1)
+                    drop_pred = slim.conv2d(net, 1, kernel_size=[1, 1], activation_fn=None, normalizer_fn=None)
+                    drop_pred = slim.flatten(drop_pred)
+
                     net = slim.flatten(net)
-                return net, encoded
+                    net = slim.fully_connected(net, 2, scope='fc',
+                                               activation_fn=None,
+                                               normalizer_fn=None,
+                                               biases_initializer=tf.zeros_initializer)
+                return net, drop_pred, encoded

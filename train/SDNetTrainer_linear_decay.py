@@ -49,17 +49,17 @@ class SDNetTrainer:
 
     def optimizer_g(self):
         if self.opt_g is None:
-            self.opt_g = self.gan_opt(0.99, 'generator')
+            self.opt_g = self.gan_opt(0.00025, 0.00005, 'generator')
         return self.opt_g
 
     def optimizer_d(self):
         if self.opt_d is None:
-            self.opt_d = self.gan_opt(0.98, 'discriminator')
+            self.opt_d = self.gan_opt(0.0002, 0., 'discriminator')
         return self.opt_d
 
-    def gan_opt(self, decay_rate, name):
-        learning_rate = tf.train.exponential_decay(self.init_lr, self.global_step, self.num_train_steps/100,
-                                                   decay_rate=decay_rate, staircase=True, name='lr_{}'.format(name))
+    def gan_opt(self, lr_init, lr_end, name):
+        learning_rate = tf.train.polynomial_decay(lr_init, self.global_step, self.num_train_steps,
+                                                  end_learning_rate=lr_end, name='lr_{}'.format(name))
         tf.summary.scalar('learning_rate_{}'.format(name), learning_rate)
         return tf.train.AdamOptimizer(learning_rate=learning_rate, beta1=0.5, epsilon=1e-6, name='Adam_{}'.format(name))
 
