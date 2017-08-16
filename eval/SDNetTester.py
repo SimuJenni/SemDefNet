@@ -99,7 +99,7 @@ class SDNetTester:
                 # Start evaluation
                 slim.evaluation.evaluation_loop('', self.get_save_dir(), self.get_save_dir(),
                                                 num_evals=self.num_eval_steps,
-                                                max_number_of_evaluations=1,
+                                                max_number_of_evaluations=10,
                                                 eval_op=names_to_updates.values(),
                                                 summary_op=tf.summary.merge(summary_ops))
 

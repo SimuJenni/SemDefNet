@@ -15,7 +15,7 @@ slim = tf.contrib.slim
 
 class SDNetTrainer:
     def __init__(self, model, dataset, pre_processor, num_epochs, optimizer='adam', lr_policy='const', init_lr=0.0003,
-                 tag='default', end_lr=None, reinit_fc=False):
+                 tag='default', end_lr=0.0, reinit_fc=False):
         tf.logging.set_verbosity(tf.logging.DEBUG)
         self.sess = tf.Session()
         self.graph = tf.Graph()
@@ -29,7 +29,7 @@ class SDNetTrainer:
         self.opt_type = optimizer
         self.lr_policy = lr_policy
         self.init_lr = init_lr
-        self.end_lr = end_lr if end_lr is not None else 0.01*init_lr
+        self.end_lr = end_lr
         self.is_finetune = False
         self.num_train_steps = None
         self.reinit_fc = reinit_fc
@@ -49,17 +49,17 @@ class SDNetTrainer:
 
     def optimizer_g(self):
         if self.opt_g is None:
-            self.opt_g = self.gan_opt(0.0003, 0.00003, 'generator')
+            self.opt_g = self.gan_opt(0.8, 'generator')
         return self.opt_g
 
     def optimizer_d(self):
         if self.opt_d is None:
-            self.opt_d = self.gan_opt(0.0002, 0.00002, 'discriminator')
+            self.opt_d = self.gan_opt(0.6, 'discriminator')
         return self.opt_d
 
-    def gan_opt(self, lr_init, lr_end, name):
-        learning_rate = tf.train.polynomial_decay(lr_init, self.global_step, 0.8*self.num_train_steps,
-                                                  end_learning_rate=lr_end, name='lr_{}'.format(name))
+    def gan_opt(self, decay_rate, name):
+        learning_rate = tf.train.exponential_decay(self.init_lr, self.global_step, self.num_train_steps/10,
+                                                   decay_rate=decay_rate, staircase=True, name='lr_{}'.format(name))
         tf.summary.scalar('learning_rate_{}'.format(name), learning_rate)
         return tf.train.AdamOptimizer(learning_rate=learning_rate, beta1=0.5, epsilon=1e-6, name='Adam_{}'.format(name))
 
@@ -151,7 +151,7 @@ class SDNetTrainer:
         if scope:
             vars2train = get_variables_to_train(trainable_scopes=scope)
         train_op = slim.learning.create_train_op(loss, optimizer, variables_to_train=vars2train,
-                                                 global_step=self.global_step, summarize_gradients=True, clip_gradient_norm=1)
+                                                 global_step=self.global_step, summarize_gradients=False)
         return train_op
 
     def make_summaries(self):
@@ -181,7 +181,7 @@ class SDNetTrainer:
         return tf.train.piecewise_constant(self.global_step, boundaries=boundaries, values=values)
 
     def learning_rate_linear(self):
-        return tf.train.polynomial_decay(self.init_lr, self.global_step, 0.9*self.num_train_steps,
+        return tf.train.polynomial_decay(self.init_lr, self.global_step, self.num_train_steps,
                                          end_learning_rate=self.end_lr)
 
     def get_variables_to_train(self, num_conv_train):
