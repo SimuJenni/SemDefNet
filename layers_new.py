@@ -39,10 +39,27 @@ def lrelu(x, leak=0.2):
     return tf.maximum(x, leak * x)
 
 
-def up_conv2d(net, num_outputs, scope, factor=2, resize_fun=tf.image.ResizeMethod.NEAREST_NEIGHBOR):
+def bilinear_addaptive_upsampling(net, factor=2):
+    in_shape = net.get_shape().as_list()
+    net = tf.image.resize_images(net, (factor * in_shape[1], factor * in_shape[2]), tf.image.ResizeMethod.BILINEAR)
+    net_ = tf.expand_dims(net, axis=4)
+    net_ = tf.nn.avg_pool3d(net_, ksize=[1, 1, 1, 2, 1], strides=[1, 1, 1, 2, 1], padding='SAME')
+    net = tf.squeeze(net_, axis=4)
+    return net
+
+
+def up_conv2d(net, num_outputs, scope, factor=2, resize_fun=tf.image.ResizeMethod.BILINEAR):
     in_shape = net.get_shape().as_list()
     net = tf.image.resize_images(net, (factor * in_shape[1], factor * in_shape[2]), resize_fun)
     net = slim.conv2d(net, num_outputs=num_outputs, scope=scope, stride=1)
+    return net
+
+
+def up_conv2d_new(net, num_outputs, scope, factor=2):
+    shortcut = bilinear_addaptive_upsampling(net, factor)
+    net = slim.conv2d(shortcut, num_outputs=num_outputs, scope=scope, stride=1, normalizer_fn=None, activation_fn=None)
+    net = shortcut + net
+    net = slim.batch_norm(net, activation_fn=tf.nn.elu, scope='{}_bn'.format(scope))
     return net
 
 
@@ -101,14 +118,35 @@ def pixel_dropout(net, p, kernel=None):
     return my_dropout(net, p, kernel, noise_shape=noise_shape, name='pixel_dropout')
 
 
+def pixel_dropout_noise(net, p, scale=None):
+    input_shape = net.get_shape().as_list()
+    noise_shape = np.array([input_shape[0], input_shape[1], input_shape[2], 1], dtype=np.int64)
+    net, binary_tensor = my_dropout(net, p, scale, noise_shape=noise_shape, name='pixel_dropout')
+    noise_tensor = tf.random_normal(net.get_shape()) * (tf.ones_like(binary_tensor)-binary_tensor)
+    return net+noise_tensor, binary_tensor
+
+
 def spatial_drop_noise(net, kernel):
     input_shape = net.get_shape().as_list()
     noise_shape = np.array([input_shape[0], input_shape[1], input_shape[2], 1], dtype=np.int64)
     random_tensor = tf.random_uniform(noise_shape)
     random_tensor -= tf.reduce_min(random_tensor, [1, 2], keep_dims=True)
-    #random_tensor = tf.pad(random_tensor, [[0, 0], [0, 1], [0, 1], [0, 0]])
     random_tensor = slim.max_pool2d(random_tensor, kernel, stride=1, padding='SAME')
     binary_tensor = math_ops.floor((random_tensor+1e-5)/tf.reduce_max(random_tensor, [1, 2], keep_dims=True))
+    noise_tensor = tf.random_normal(net.get_shape()) * binary_tensor
+    binary_tensor = tf.ones_like(binary_tensor) - binary_tensor
+    ret = net * binary_tensor
+    ret.set_shape(net.get_shape())
+    return ret+noise_tensor, binary_tensor
+
+
+def spatial_drop_noise2(net, p, kernel):
+    input_shape = net.get_shape().as_list()
+    noise_shape = np.array([input_shape[0], input_shape[1], input_shape[2], 1], dtype=np.int64)
+    random_tensor = 1.-p
+    random_tensor += tf.random_uniform(noise_shape)
+    binary_tensor = math_ops.floor(random_tensor)
+    binary_tensor = slim.max_pool2d(binary_tensor, kernel, stride=1, padding='SAME')
     noise_tensor = tf.random_normal(net.get_shape()) * binary_tensor
     binary_tensor = tf.ones_like(binary_tensor) - binary_tensor
     ret = net * binary_tensor

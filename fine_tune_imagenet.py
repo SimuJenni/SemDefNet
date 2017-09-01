@@ -1,10 +1,10 @@
 from Preprocessor import Preprocessor
 from train.SDNetTrainer_linear_decay import SDNetTrainer
 from datasets.ImageNet import ImageNet
-from models.SDNet_avgDisc_concat_new_spatial_drop_noise_2 import SDNet
+from models.SDNet_avgDisc_concat_new_spatial_drop_noise import SDNet
 from utils import get_checkpoint_path
 
-target_shape=[227, 227, 3]
+target_shape = [227, 227, 3]
 model = SDNet(num_layers=5, batch_size=256, target_shape=target_shape)
 data = ImageNet()
 preprocessor = Preprocessor(target_shape=target_shape)

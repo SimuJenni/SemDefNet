@@ -22,8 +22,8 @@ _CLASS_NUM = {'aeroplane': 0, 'bicycle': 1, 'bird': 2, 'boat': 3, 'bottle': 4, '
               'pottedplant': 15, 'sheep': 16, 'sofa': 17, 'train': 18, 'tvmonitor': 19}
 
 
-def _parse_xml(xml_file, data_path):
-    """parse xml_file
+def _parse_annotation(xml_file, data_path):
+    """parse annotation file
     Args:
       xml_file: the input xml file path
     Returns:
