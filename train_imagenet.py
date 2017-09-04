@@ -1,7 +1,7 @@
 from Preprocessor import Preprocessor
 from train.SDNetTrainer import SDNetTrainer
 from datasets.ImageNet import ImageNet
-from models.SDNet import SDNet
+from models.SDNet_avgDisc_concat_new_2 import SDNet
 
 target_shape = [128, 128, 3]
 model = SDNet(num_layers=5, batch_size=128, target_shape=target_shape)

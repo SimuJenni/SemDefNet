@@ -3,7 +3,7 @@ import tensorflow.contrib.slim as slim
 from layers import lrelu, conv_group
 
 
-def alexnet_argscope(activation=tf.nn.relu, kernel_size=(3, 3), padding='SAME', training=True, w_reg=0.00001,
+def alexnet_argscope(activation=tf.nn.relu, kernel_size=(3, 3), padding='SAME', training=True, w_reg=0.00005,
                      fix_bn=False):
     """Defines default parameter values for all the layers used in ToonNet.
 
@@ -24,7 +24,6 @@ def alexnet_argscope(activation=tf.nn.relu, kernel_size=(3, 3), padding='SAME', 
         'decay': 0.99,
         'epsilon': 0.001,
         'center': True,
-        'scale': True,
         'fused': True,
     }
     he = tf.contrib.layers.variance_scaling_initializer(mode='FAN_AVG')
