@@ -1,7 +1,7 @@
 from Preprocessor import Preprocessor
 from eval.SDNetTester import SDNetTester
 from datasets.STL10 import STL10
-from models.SDNet_avgDisc_concat_new_3 import SDNet
+from models.SDNet_avgDisc_concat_new_4 import SDNet
 
 target_shape = [96, 96, 3]
 
