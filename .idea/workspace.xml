@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4771605-9993-4747-9ba9-dcc27d19c29f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fine_tune_stl10.py" afterPath="$PROJECT_DIR$/fine_tune_stl10.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/AlexNet_avgDisc_concat_noBN_3.py" afterPath="$PROJECT_DIR$/models/AlexNet_avgDisc_concat_noBN_3.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/SDNet_avgDisc_concat_new_3.py" afterPath="$PROJECT_DIR$/models/SDNet_avgDisc_concat_new_3.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_classifier_stl10.py" afterPath="$PROJECT_DIR$/test_classifier_stl10.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_classifier_imagenet.py" afterPath="$PROJECT_DIR$/test_classifier_imagenet.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/train_imagenet.py" afterPath="$PROJECT_DIR$/train_imagenet.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/train_stl10_linear.py" afterPath="$PROJECT_DIR$/train_stl10_linear.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,8 +14,42 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="test_classifier_stl10.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test_classifier_stl10.py">
+      <file leaf-file-name="SDNet_avgDisc_concat_new_4.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/SDNet_avgDisc_concat_new_4.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="471">
+              <caret line="67" column="0" lean-forward="true" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_classifier_imagenet.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test_classifier_imagenet.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SDNet_avgDisc_concat_new_3.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/SDNet_avgDisc_concat_new_3.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="4" column="28" lean-forward="true" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="train_imagenet.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/train_imagenet.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="216">
               <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
@@ -31,79 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SDNet_avgDisc_concat_new_4.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/SDNet_avgDisc_concat_new_4.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="57" column="77" lean-forward="true" selection-start-line="57" selection-start-column="77" selection-end-line="57" selection-end-column="77" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SDNet_avgDisc_concat_new_3.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/SDNet_avgDisc_concat_new_3.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="17" column="40" lean-forward="true" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AlexNet_avgDisc_concat_noBN_3.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/AlexNet_avgDisc_concat_noBN_3.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="28" column="71" lean-forward="true" selection-start-line="28" selection-start-column="71" selection-end-line="28" selection-end-column="71" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SDNet_avgDisc_concat_new_2.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/SDNet_avgDisc_concat_new_2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-108">
-              <caret line="15" column="51" lean-forward="true" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="layers_new.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/layers_new.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="597">
-              <caret line="66" column="43" lean-forward="true" selection-start-line="66" selection-start-column="43" selection-end-line="66" selection-end-column="43" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SDNetTrainer_linear_decay.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/train/SDNetTrainer_linear_decay.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4644">
-              <caret line="268" column="0" lean-forward="false" selection-start-line="268" selection-start-column="0" selection-end-line="268" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="train_stl10_linear.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/train_stl10_linear.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="108">
-              <caret line="6" column="128" lean-forward="false" selection-start-line="6" selection-start-column="117" selection-end-line="6" selection-end-column="128" />
+              <caret line="6" column="130" lean-forward="true" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="130" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -111,21 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="train_imagenet.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/train_imagenet.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="35" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="fine_tune_stl10.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fine_tune_stl10.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="90">
+              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -176,7 +127,6 @@
         <option value="$PROJECT_DIR$/test_reconstruction_stl10.py" />
         <option value="$PROJECT_DIR$/models/AlexNet_avgDisc_concat_noBN.py" />
         <option value="/usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/random_ops.py" />
-        <option value="$PROJECT_DIR$/test_classifier_imagenet.py" />
         <option value="$PROJECT_DIR$/datasets/convert_voc2007.py" />
         <option value="$PROJECT_DIR$/fine_tune_imagenet.py" />
         <option value="$PROJECT_DIR$/models/SDNet_avgDisc_concat_new_spatial_drop_noise_2.py" />
@@ -186,12 +136,13 @@
         <option value="$PROJECT_DIR$/layers_new.py" />
         <option value="$PROJECT_DIR$/train/SDNetTrainer_linear_decay.py" />
         <option value="$PROJECT_DIR$/models/SDNet_avgDisc_concat_new_4.py" />
-        <option value="$PROJECT_DIR$/train_imagenet.py" />
         <option value="$PROJECT_DIR$/models/SDNet_avgDisc_concat_new_3.py" />
         <option value="$PROJECT_DIR$/models/AlexNet_avgDisc_concat_noBN_3.py" />
         <option value="$PROJECT_DIR$/train_stl10_linear.py" />
         <option value="$PROJECT_DIR$/fine_tune_stl10.py" />
         <option value="$PROJECT_DIR$/test_classifier_stl10.py" />
+        <option value="$PROJECT_DIR$/test_classifier_imagenet.py" />
+        <option value="$PROJECT_DIR$/train_imagenet.py" />
       </list>
     </option>
   </component>
@@ -559,16 +510,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_classifier_imagenet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#37#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/datasets/dataset_utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1350">
@@ -722,56 +663,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train/SDNetTrainer_linear_decay.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4644">
-          <caret line="268" column="0" lean-forward="false" selection-start-line="268" selection-start-column="0" selection-end-line="268" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train_imagenet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="35" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/layers_new.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="597">
           <caret line="66" column="43" lean-forward="true" selection-start-line="66" selection-start-column="43" selection-end-line="66" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/SDNet_avgDisc_concat_new_4.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="57" column="77" lean-forward="true" selection-start-line="57" selection-start-column="77" selection-end-line="57" selection-end-column="77" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/SDNet_avgDisc_concat_new_2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-108">
-          <caret line="15" column="51" lean-forward="true" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/SDNet_avgDisc_concat_new_3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="40" lean-forward="true" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
@@ -796,20 +691,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train_stl10_linear.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="128" lean-forward="false" selection-start-line="6" selection-start-column="117" selection-end-line="6" selection-end-column="128" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fine_tune_stl10.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="90">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
@@ -817,6 +702,70 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test_classifier_stl10.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="37" lean-forward="false" selection-start-line="0" selection-start-column="37" selection-end-line="0" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/SDNet_avgDisc_concat_new_4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="67" column="0" lean-forward="true" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_classifier_imagenet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/SDNetTrainer_linear_decay.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4644">
+          <caret line="268" column="0" lean-forward="false" selection-start-line="268" selection-start-column="0" selection-end-line="268" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/SDNet_avgDisc_concat_new_2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="34" column="90" lean-forward="true" selection-start-line="34" selection-start-column="90" selection-end-line="34" selection-end-column="90" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/SDNet_avgDisc_concat_new_3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="28" lean-forward="true" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_stl10_linear.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="130" lean-forward="true" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="130" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_imagenet.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
